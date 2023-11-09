@@ -7,9 +7,10 @@ using namespace std;
 
 #define ERROR 1
 
-Poly::Poly(double coef)
+Poly::Poly(double val)
 {
-    coefficients[0] = coef;
+    coefficients.clear();
+    coefficients[0] = val;
 }
 
 double &Poly::operator[](int coef_num)
