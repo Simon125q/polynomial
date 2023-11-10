@@ -102,6 +102,7 @@ Poly Poly::operator*(const Poly &other) const
                 result.coefficients[it->first + other_it->first] + it->second * other_it->second;
             ++other_it;
         }
+        ++it;
     }
 
     return result;
@@ -113,7 +114,7 @@ Poly &Poly::operator=(const Poly &other)
 
     coefficients.clear();
 
-    while (other_it != coefficients.end())
+    while (other_it != other.coefficients.end())
     {
         coefficients[other_it->first] = other_it->second;
         ++other_it;
