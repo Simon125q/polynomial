@@ -91,20 +91,19 @@ Poly Poly::operator-(const Poly &other) const
 Poly Poly::operator*(const Poly &other) const
 {
     map<int, double>::const_iterator it = coefficients.begin();
-    map<int, double>::const_iterator other_it = other.coefficients.begin();
+    
     Poly result;
-
     while (it != coefficients.end())
     {
+        map<int, double>::const_iterator other_it = other.coefficients.begin();
         while (other_it != other.coefficients.end())
         {
-            result.coefficients[it->first + other_it->first] =
-                result.coefficients[it->first + other_it->first] + it->second * other_it->second;
+            result.coefficients[(it->first + other_it->first)] += it->second * other_it->second;
             ++other_it;
         }
         ++it;
     }
-
+    
     return result;
 }
 
@@ -141,10 +140,12 @@ ostream &operator<<(ostream &os, const Poly &other)
         {
             if (it->second > 0)
                 os << " + ";
+            else if (it->second < 0)
+                os << " - ";
             if (it->first != 0)
-                os << it->second << "x^" << it->first;
+                os << abs(it->second) << "x^" << it->first;
             else
-                os << it->second;
+                os << abs(it->second);
         }
     }
 

@@ -4,8 +4,8 @@
 
 class Poly
 {
-public:
     std::map<int, double> coefficients;
+public:
     
     Poly(double val = 0);
     double & operator [](int coef_num);
@@ -15,9 +15,9 @@ public:
     Poly operator-(const Poly &other) const;
     Poly operator*(const Poly &other) const;
     Poly &operator=(const Poly &other);
+    friend std::ostream &operator<<(std::ostream &os, const Poly &other);
+    friend Poly operator+(double num, const Poly &obj);
+    friend Poly operator-(double num, const Poly &obj);
+    friend Poly operator*(double num, const Poly &obj);
 };
     
-std::ostream &operator<<(std::ostream &os, const Poly &other);
-Poly operator+(double num, const Poly &obj);
-Poly operator-(double num, const Poly &obj);
-Poly operator*(double num, const Poly &obj);
