@@ -91,7 +91,7 @@ Poly Poly::operator-(const Poly &other) const
 Poly Poly::operator*(const Poly &other) const
 {
     map<int, double>::const_iterator it = coefficients.begin();
-    
+
     Poly result;
     while (it != coefficients.end())
     {
@@ -103,7 +103,7 @@ Poly Poly::operator*(const Poly &other) const
         }
         ++it;
     }
-    
+
     return result;
 }
 
@@ -172,4 +172,3 @@ Poly operator*(double num, const Poly &obj)
     Poly result = multiplier * obj;
     return result;
 }
-
